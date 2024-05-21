@@ -7,7 +7,8 @@ import os
 
 keras = tf.keras
 categories_path = os.path.join(settings.BASE_DIR, 'categories.npy')
-model_path = os.path.join(settings.BASE_DIR, 'doodles_model.h5')
+# model_path = os.path.join(settings.BASE_DIR, 'doodles_model.h5')
+model_path = os.path.join(settings.BASE_DIR, 'doodles_model_ver2.h5')
 
 
 class DoodleModel:

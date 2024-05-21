@@ -63,6 +63,7 @@ def get_prediction(request: HttpRequest) -> JsonResponse:
             model.set_data(grid)
 
             top3_predict = model.top3_predict()
+            print(top3_predict)
             return JsonResponse({
                 'message': 'OK',
                 'prediction': top3_predict[0],
