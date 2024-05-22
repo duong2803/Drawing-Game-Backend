@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpRequest
 from django.views.decorators.csrf import csrf_exempt
 import random
-from . import doodle_model
+# from . import doodle_model
 import json
 
 
@@ -15,7 +15,7 @@ labels = ['bear', 'bee', 'bird', 'cat', 'dog', 'dolphin', 'elephant', 'frog',
           'table', 'teapot', 'television', 'toilet', 'ambulance', 'bicycle', 'bulldozer', 'bus', 'car', 'motorbike',
           'parachute', 'police car', 'sailboat', 'school bus', 'skateboard', 'speedboat', 'tractor', 'train', 'truck']
 
-model = doodle_model.DoodleModel()
+# model = doodle_model.DoodleModel()
 
 
 def start_game(request: HttpRequest) -> JsonResponse:
@@ -56,21 +56,22 @@ def get_levels(request: HttpRequest) -> JsonResponse:
 
 @csrf_exempt
 def get_prediction(request: HttpRequest) -> JsonResponse:
-    if request.method == 'POST':
-        try:
-            data: dict = json.loads(request.body.decode('utf-8'))
-            grid: list = data.get('grid')
-            model.set_data(grid)
+    pass
+    # if request.method == 'POST':
+    #     try:
+    #         data: dict = json.loads(request.body.decode('utf-8'))
+    #         grid: list = data.get('grid')
+    #         model.set_data(grid)
 
-            top3_predict = model.top3_predict()
-            print(top3_predict)
-            return JsonResponse({
-                'message': 'OK',
-                'prediction': top3_predict[0],
-                'probability': top3_predict[1],
-            }, status=200)
-        except json.JSONDecodeError:
-            return JsonResponse({'message': 'Invalid JSON data'}, status=400)
-    return JsonResponse({
-        'message': 'OK'
-    }, status=200)
+    #         top3_predict = model.top3_predict()
+    #         print(top3_predict)
+    #         return JsonResponse({
+    #             'message': 'OK',
+    #             'prediction': top3_predict[0],
+    #             'probability': top3_predict[1],
+    #         }, status=200)
+    #     except json.JSONDecodeError:
+    #         return JsonResponse({'message': 'Invalid JSON data'}, status=400)
+    # return JsonResponse({
+    #     'message': 'OK'
+    # }, status=200)
